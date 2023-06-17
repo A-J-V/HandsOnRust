@@ -83,6 +83,9 @@ impl BaseMap for Map {
                 self.index_to_point2d(idx2)
             )
     }
+    fn is_opaque(&self, idx: usize) -> bool {
+        self.tiles[idx as usize] != TileType::Floor
+    }
 }
 pub fn map_idx(x: i32, y: i32) -> usize {
     ((y * SCREEN_WIDTH) + x) as usize
