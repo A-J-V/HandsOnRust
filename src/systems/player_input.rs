@@ -97,11 +97,13 @@ fn use_item(n: usize, ecs: &mut SubWorld, commands: &mut CommandBuffer) -> Point
         .filter(|(item_count, (_, _, _))| *item_count == n)
         .find_map(|(_, (item_entity, _, _))| Some(*item_entity));
     if let Some(item_entity) = item_entity {
-        commands
-            .push(((), ActivateItem{
+        commands.push((
+            (),
+            ActivateItem {
                 used_by: player_entity,
-                item: item_entity
-            }));
+                item: item_entity,
+            },
+        ));
     }
     Point::zero()
 }
